@@ -6,11 +6,12 @@ using TMPro;
 
 public class aliveTime : MonoBehaviour
 {
+    public playerScript playerScript;
     public TMP_Text lastedAlive;
 
 
     void Update()
     {
-        lastedAlive.text = "You were alive for " + playerScript.aliveTime.ToString("0") +" seconds.";
+        lastedAlive.text = "You were alive for " + playerScript.playerLogic.aliveTime.ToString("0") +" seconds.";
     }
 }

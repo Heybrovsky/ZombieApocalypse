@@ -1,40 +1,36 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class playerScript : MonoBehaviour
 {
+    //widok 
     [SerializeField] private Camera mainCamera;
-    public Transform playerT;
-    public static int playerHealth = 100;
-    public bool death;
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
-    public float bulletForce = 5f;
     public GameObject DeathMenu;
-    public static float aliveTime = 0f;
-
+    public Transform playerT;
+    
+    //logika
+    public PlayerLogic playerLogic;
 
     void Start()
     {
-      
         Color color1;
-
         ColorUtility.TryParseHtmlString("#3600FF", out color1);
         GetComponent<Renderer>().material.color = color1;
     }
 
      void Update()
-    {
-        aliveTime = aliveTime + Time.deltaTime;
+     {
+         playerLogic.UpdateAliveTime(Time.deltaTime);
+        
         playerMovement();
         playerDeath();
-        if (Input.GetButtonDown("Fire1") && Time.timeScale != 0)
+        if (IsMouseButtonClicked() && Time.timeScale != 0)
         {
-
             playerShooting();
         }
-
-
     }
 
     void playerMovement()
@@ -51,9 +47,9 @@ public class playerScript : MonoBehaviour
 
     void playerDeath()
     {
-        if(playerHealth <= 0)
+        if(playerLogic.playerHealth <= 0)
         {
-            death = true;
+            playerLogic.death = true;
             Time.timeScale = 0;
             DeathMenu.SetActive(true);
         }
@@ -66,7 +62,14 @@ public class playerScript : MonoBehaviour
     void playerShooting()
     {
        GameObject projectile = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+       projectile.transform.parent = bulletSpawnPoint.transform;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.AddRelativeForce(bulletSpawnPoint.forward * bulletForce, ForceMode.Impulse);
+        rb.AddRelativeForce(bulletSpawnPoint.forward * playerLogic.bulletForce, ForceMode.Impulse);
     }
+
+    public bool IsMouseButtonClicked()
+    {
+        return Input.GetButtonDown("Fire1");
+    }
+
 }

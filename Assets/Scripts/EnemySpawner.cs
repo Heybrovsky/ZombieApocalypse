@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public playerScript playerScript;
     public GameObject Enemy;
     public static float timeToSpawn = 1f;
     public float spawnRadius = 25;
@@ -26,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            if (playerVariable.death == false)
+            if (playerScript.playerLogic.death == false)
             {
                 Instantiate(Enemy, new Vector3(Random.insideUnitSphere.x * spawnRadius, 0, Random.insideUnitSphere.z * spawnRadius), Quaternion.identity);
                 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
+    public playerScript playerScript;
     public deathNote deathNoteVariables;
     public int enemyHealth = 100;
     public int enemyAttackDamage = 50;
@@ -14,10 +15,6 @@ public class EnemySpawn : MonoBehaviour
     private bool gotHitFS = false;
     public bool coroutineRunning;
     public MeshRenderer[] renderers;
-
-
-
-
 
 
     void Start()
@@ -102,8 +99,7 @@ public class EnemySpawn : MonoBehaviour
 
     void enemyAttack()
     {
-
-        playerScript.playerHealth = playerScript.playerHealth - enemyAttackDamage;
+        playerScript.playerLogic.playerHealth -= enemyAttackDamage;
     }
 
     void enemyDeath() {
@@ -114,7 +110,7 @@ public class EnemySpawn : MonoBehaviour
     IEnumerator WaitForStunToEnd(Collider collision)
     {
         coroutineRunning = true;
-            enemyMovementSpeed = enemyMovementSpeed - collision.gameObject.GetComponent<iceBlast>().iceBlastSlow / 100;
+            enemyMovementSpeed -= collision.gameObject.GetComponent<iceBlast>().iceBlastSlow / 100;
             yield return new WaitForSeconds(collision.gameObject.GetComponent<iceBlast>().slowDuration);
         coroutineRunning = false;
             enemyMovementSpeed /= enemyMovementSpeed;
