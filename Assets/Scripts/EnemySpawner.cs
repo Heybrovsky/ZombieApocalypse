@@ -5,34 +5,27 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public playerScript playerScript;
+    public PlayerScript Player;
     public GameObject Enemy;
-    public static float timeToSpawn = 1f;
-    public float spawnRadius = 25;
-    public playerScript playerVariable;
-
-
-
-
+    public EnemyScript EnemyAccess;
+    public ObjectPooler ObjectPoolerAccess;
     void Start()
     {
         StartCoroutine(SpawnEnemy());
  
     }
-
-
-
-
     IEnumerator SpawnEnemy()
     {
         while (true)
         {
-            if (playerScript.playerLogic.death == false)
+            if (Player.LogicValue.Death == false)
             {
-                Instantiate(Enemy, new Vector3(Random.insideUnitSphere.x * spawnRadius, 0, Random.insideUnitSphere.z * spawnRadius), Quaternion.identity);
-                
+                //Instantiate(Enemy, new Vector3(Random.insideUnitSphere.x * EnemyAccess.EnemyValue.spawnRadius, 0, Random.insideUnitSphere.z * EnemyAccess.EnemyValue.spawnRadius), Quaternion.identity);
+                ObjectPoolerAccess.SpawnFromPool("Enemy",
+                    new Vector3(Random.insideUnitSphere.x * EnemyAccess.EnemyValue.spawnRadius, 0,
+                        Random.insideUnitSphere.z * EnemyAccess.EnemyValue.spawnRadius), Quaternion.identity);
             }
-            yield return new WaitForSeconds(timeToSpawn);
+            yield return new WaitForSeconds(EnemyAccess.EnemyValue.TimeToSpawn);
         }
     }
 

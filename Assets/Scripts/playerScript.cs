@@ -2,28 +2,32 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class playerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     //widok 
     [SerializeField] private Camera mainCamera;
-    public Transform bulletSpawnPoint;
-    public GameObject bulletPrefab;
+    public Transform BulletSpawnPoint;
+    public GameObject BulletPrefab;
     public GameObject DeathMenu;
-    public Transform playerT;
-    
-    //logika
-    public PlayerLogic playerLogic;
+    public Transform PlayerT;
+
+    public ObjectPooler ObjectPoolerAccess;
+    //logika 
+    public PlayerLogic LogicValue;
+
+    private void Awake()
+    {
+        LogicValue = new PlayerLogic();
+    }
 
     void Start()
     {
-        Color color1;
-        ColorUtility.TryParseHtmlString("#3600FF", out color1);
-        GetComponent<Renderer>().material.color = color1;
+        GetComponent<Renderer>().material.color = Color.blue;
     }
 
      void Update()
      {
-         playerLogic.UpdateAliveTime(Time.deltaTime);
+         LogicValue.UpdateAliveTime(Time.deltaTime);
         
         playerMovement();
         playerDeath();
@@ -36,20 +40,20 @@ public class playerScript : MonoBehaviour
     void playerMovement()
     {
         Ray mouseRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane p = new Plane(Vector3.up, playerT.position);
+        Plane p = new Plane(Vector3.up, PlayerT.position);
         if (p.Raycast(mouseRay, out float hitDist))
         {
             Vector3 hitPoint = mouseRay.GetPoint(hitDist);
-            playerT.LookAt(hitPoint);
+            PlayerT.LookAt(hitPoint);
         }
 
     }
 
     void playerDeath()
     {
-        if(playerLogic.playerHealth <= 0)
+        if(LogicValue.PlayerHealth <= 0)
         {
-            playerLogic.death = true;
+            LogicValue.Death = true;
             Time.timeScale = 0;
             DeathMenu.SetActive(true);
         }
@@ -61,10 +65,10 @@ public class playerScript : MonoBehaviour
 
     void playerShooting()
     {
-       GameObject projectile = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-       projectile.transform.parent = bulletSpawnPoint.transform;
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.AddRelativeForce(bulletSpawnPoint.forward * playerLogic.bulletForce, ForceMode.Impulse);
+  
+        GameObject projectile = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.identity);
+       Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        rb.AddRelativeForce(BulletSpawnPoint.forward * LogicValue.BulletForce, ForceMode.Impulse);
     }
 
     public bool IsMouseButtonClicked()

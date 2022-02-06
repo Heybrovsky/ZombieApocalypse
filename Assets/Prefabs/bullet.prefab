@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8863976359498218908}
   - component: {fileID: 457165072324020138}
   - component: {fileID: 6153223711431146323}
+  - component: {fileID: 2391558362871758276}
   - component: {fileID: 5573330235162562445}
-  - component: {fileID: 5573330235162562444}
   - component: {fileID: 4313177248466770950}
   m_Layer: 0
   m_Name: bullet
@@ -84,6 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2391558362871758276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573330235162562447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574c0c5798e75814bb6db6304598c345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &5573330235162562445
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -97,21 +109,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.048559725
   m_Center: {x: -0.000000009313226, y: 0.31, z: 0.01}
---- !u!114 &5573330235162562444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5573330235162562447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 574c0c5798e75814bb6db6304598c345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 6976016864342487476, guid: fb4870729575c3f499b6986b491b7ef1, type: 3}
-  bulletDamage: 75
-  healthCur: 0
 --- !u!54 &4313177248466770950
 Rigidbody:
   m_ObjectHideFlags: 0

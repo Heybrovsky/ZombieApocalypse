@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class mainMenu : MonoBehaviour
 {
-    public playerScript playerScript;
     public GameObject difficultyMenu;
     public GameObject MainMenu;
+    public PlayerLogic LogicValue;
+    public EnemyLogic EnemyValue;
+
+    private void Awake()
+    {
+        EnemyValue = new EnemyLogic();
+        LogicValue = new PlayerLogic();
+    }
     public void NewGame()
     {
         MainMenu.SetActive(!MainMenu.activeInHierarchy);
@@ -16,28 +23,28 @@ public class mainMenu : MonoBehaviour
 
     public void EasyGame()
     {
-        playerScript.playerLogic.playerHealth = 250;
-        EnemySpawner.timeToSpawn = 0.4f;
+        LogicValue.PlayerHealth = 250;
+        EnemyValue.TimeToSpawn = 0.4f;
         Time.timeScale = 1;
-        playerScript.playerLogic.aliveTime = 0;
+        LogicValue.AliveTime = 0;
         SceneManager.LoadScene("Gameplay");
     }
 
     public void MediumGame()
     {
-        playerScript.playerLogic.playerHealth = 150;
-        EnemySpawner.timeToSpawn = 0.2f;
+        LogicValue.PlayerHealth = 150;
+        EnemyValue.TimeToSpawn = 0.2f;
         Time.timeScale = 1;
-        playerScript.playerLogic.aliveTime = 0;
+        LogicValue.AliveTime = 0;
         SceneManager.LoadScene("Gameplay");
     }
 
     public void HardGame()
     {
-        playerScript.playerLogic.playerHealth = 50;
-        EnemySpawner.timeToSpawn = 0.1f;
+        LogicValue.PlayerHealth = 50;
+        EnemyValue.TimeToSpawn = 0.1f;
         Time.timeScale = 1;
-        playerScript.playerLogic.aliveTime = 0;
+        LogicValue.AliveTime = 0;
         SceneManager.LoadScene("Gameplay");
     }
 

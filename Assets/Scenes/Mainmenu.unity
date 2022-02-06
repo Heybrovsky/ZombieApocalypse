@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35807fcfcce07fa41ba7f98fa81f4170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 3753102910545909983, guid: 46e14e8099d79914ca52f303e4c873f3, type: 3}
   difficultyMenu: {fileID: 1150086614}
   MainMenu: {fileID: 175651094}
 --- !u!1 &228867864
@@ -724,7 +725,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1150086616}
-        m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: mainMenu, ZombieApocalypse
         m_MethodName: HardGame
         m_Mode: 1
         m_Arguments:
@@ -926,7 +927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35807fcfcce07fa41ba7f98fa81f4170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyMenu: {fileID: 0}
+  Player: {fileID: 3753102910545909983, guid: 46e14e8099d79914ca52f303e4c873f3, type: 3}
+  difficultyMenu: {fileID: 1150086614}
   MainMenu: {fileID: 175651094}
 --- !u!1 &1292427118
 GameObject:
@@ -1290,7 +1292,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 175651096}
-        m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: mainMenu, ZombieApocalypse
         m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
@@ -1631,7 +1633,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1150086616}
-        m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: mainMenu, ZombieApocalypse
         m_MethodName: EasyGame
         m_Mode: 1
         m_Arguments:
@@ -2059,7 +2061,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1150086616}
-        m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: mainMenu, ZombieApocalypse
         m_MethodName: MediumGame
         m_Mode: 1
         m_Arguments:
