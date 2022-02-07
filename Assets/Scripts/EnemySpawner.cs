@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class EnemySpawner : MonoBehaviour
 {
     public PlayerScript Player;
-    public GameObject Enemy;
     public EnemyScript EnemyAccess;
     public ObjectPooler ObjectPoolerAccess;
     void Start()

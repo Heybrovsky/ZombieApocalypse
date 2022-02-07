@@ -35,8 +35,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-         
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             EnemyValue.EnemyHealth -= Player.LogicValue.BulletDamage;
             if (EnemyValue.EnemyHealth <= 0)
             {

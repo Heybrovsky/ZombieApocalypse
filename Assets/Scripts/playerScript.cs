@@ -66,8 +66,9 @@ public class PlayerScript : MonoBehaviour
     void playerShooting()
     {
   
-        GameObject projectile = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.identity);
+        GameObject projectile = ObjectPoolerAccess.SpawnFromPool("Bullet", BulletSpawnPoint.position, Quaternion.identity);
        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+       rb.velocity = Vector3.zero;
         rb.AddRelativeForce(BulletSpawnPoint.forward * LogicValue.BulletForce, ForceMode.Impulse);
     }
 
