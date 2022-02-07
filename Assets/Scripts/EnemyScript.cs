@@ -33,6 +33,17 @@ public class EnemyScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Player")
+        {
+            enemyAttack();
+            gameObject.SetActive(false);
+        }
+    }
+
+
+
+    void OnTriggerEnter(Collider collision)
+    {
         if (collision.gameObject.tag == "Bullet")
         {
             collision.gameObject.SetActive(false);
@@ -42,19 +53,6 @@ public class EnemyScript : MonoBehaviour
                 enemyDeath();
             }
         }
-
-        if (collision.gameObject.tag == "Player")
-        {
-            enemyAttack();
-            Destroy(this.gameObject);
-        }
-
-    }
-
-
-
-    void OnTriggerEnter(Collider collision)
-    {
 
         if (collision.gameObject.tag == "fireStrike" && EnemyValue.GotHitFS == false)
         {

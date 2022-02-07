@@ -41,7 +41,6 @@ public class ObjectPooler : MonoBehaviour
             Debug.Log("Pool with tag " + tag + " doesn't exist");
             return null;
         }
-        Debug.Log("talala");
         GameObject objectToSpawn = PoolDictionary[tag].Dequeue();
         
         objectToSpawn.SetActive(true);
