@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 5573330235162562445, guid: 4ff77ae21a019124597151fb5c7a1637,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5573330235162562447, guid: 4ff77ae21a019124597151fb5c7a1637,
         type: 3}
@@ -864,7 +864,7 @@ MonoBehaviour:
   pools:
   - Tag: Enemy
     Prefab: {fileID: 1185879146}
-    Size: 50
+    Size: 30
   - Tag: Bullet
     Prefab: {fileID: 2120202696}
     Size: 10
@@ -1443,7 +1443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Enemy: {fileID: 1185879146}
   EnemyAccess: {fileID: 0}
   ObjectPoolerAccess: {fileID: 0}
 --- !u!4 &1837396088
@@ -2054,7 +2053,7 @@ PrefabInstance:
     - target: {fileID: 6976016864342487471, guid: fb4870729575c3f499b6986b491b7ef1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 6976016864342487471, guid: fb4870729575c3f499b6986b491b7ef1,
         type: 3}
@@ -2320,6 +2319,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.041
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499297682770299240, guid: a16e0c53e88b04448bcc9ef10c6dfea4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a16e0c53e88b04448bcc9ef10c6dfea4, type: 3}
